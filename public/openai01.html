@@ -5,8 +5,8 @@
     View the console at ctrl-shift-i (for window or linux)<br>
     <script type="module">
         import  { Configuration, OpenAIApi }   from 'https://cdn.jsdelivr.net/npm/openai@3.2.1/dist/index.min.js';
-        document.myOpenConfiguration = Configuration
-        document.myOpenAIApi = OpenAIApi 
+        document.myOpenConf = Configuration
+        document.myOpenAI = OpenAIApi 
       
   </script>
   
@@ -17,16 +17,21 @@
       
      // const { Configuration, OpenAIApi } = require("openai");
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+myOpenAILoad = async function(mySentToken){      
+      
+const configuration = new document.myOpenConf({
+  apiKey: mySentToken,    // process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
+const openai = new document.myOpenAI(configuration);
 
-const completion = await openai.createCompletion({
+const completion = await document.myOpenAI.createCompletion({
   model: "text-davinci-003",
   prompt: "Hello world",
 });
 console.log(completion.data.choices[0].text);
+      
+      
+      }      
  </script>
     
     <script>
@@ -73,9 +78,7 @@ console.log(completion.data.choices[0].text);
 }">
 version 0.3.3-33<br>
   <h2 align=center> Testing HuggingFaceJS</h2>
-Output in the div below. Works without personal token just stops after about 20 loads or refreshes per hour<br>
-  
-Note: Delete and save a blank token to return to the regular rate.<br><br>  
+OpenAI needs a key so you need to save the key token first unlike hugginface that allows a few token less attempts<br><br>  
 <input id="myEnteredToken" type=password size=30>
 <input type="button" value="Store Token Locally" onClick="{
    localStorage.setItem('myStoredToken', document.getElementById('myEnteredToken').value)
@@ -111,7 +114,8 @@ Load the URL of the image to Analyse:<br>
    
 <input type=button value="LOAD and Test Model"onclick="{
     document.getElementById('myDiv01').innerHTML = ''
-    myHugginFaceLoad(document.getElementById('myEnteredToken').value,document.getElementById('myDataOrImage').value,document.getElementById('myModel').value ) 
+    myOpenAILoad(document.getElementById('myEnteredToken').value)                                                   
+   // myHugginFaceLoad(document.getElementById('myEnteredToken').value,document.getElementById('myDataOrImage').value,document.getElementById('myModel').value ) 
                                                        
 }"><br><br>
   
