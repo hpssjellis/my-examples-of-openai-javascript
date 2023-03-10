@@ -71,17 +71,17 @@ console.log(completion.data.choices[0].text);
   
   </head> 
 <body onload="{
-   myStorage = localStorage.getItem('myStoredToken')
+   myStorage = localStorage.getItem('myStoredopenAI')
    if(myStorage  != null){
       document.getElementById('myEnteredToken').value = myStorage 
     }
 }">
-version 0.3.3-33<br>
+version 0.3.3-34<br>
   <h2 align=center> Testing HuggingFaceJS</h2>
 OpenAI needs a key so you need to save the key token first unlike hugginface that allows a few token less attempts<br><br>  
 <input id="myEnteredToken" type=password size=30>
 <input type="button" value="Store Token Locally" onClick="{
-   localStorage.setItem('myStoredToken', document.getElementById('myEnteredToken').value)
+   localStorage.setItem('myStoredopenAI', document.getElementById('myEnteredToken').value)
    document.getElementById('myDiv01').innerHTML = 'Latest Token has been stored containing these last 4 characters: ' +
        document.getElementById('myEnteredToken').value.slice(-4)
 }"><br>
